@@ -1,0 +1,14 @@
+/* コードブロックの背景を変更 */
+div.highlight pre {
+    background-color: #2e3440;  /* ダークグレー */
+    color: #d8dee9;  /* 明るめの文字色 */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* インラインコードの背景を変更 */
+code {
+    background-color: #eceff4;  /* ライトグレー */
+    padding: 2px 5px;
+    border-radius: 3px;
+}

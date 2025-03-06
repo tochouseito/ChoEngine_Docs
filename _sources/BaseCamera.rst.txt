@@ -1,0 +1,60 @@
+BaseCamera
+==========
+
+このセクションでは、BaseCameraの基本的な使い方を解説します。
+
+カメラをシーンに追加するまでの手順
+---------------------------------
+
+1. カメラとして利用するクラスにBaseCameraを継承させます。
+
+.. code-block:: cpp
+
+    #include "Game/Scripts/Camera/BaseCamera/BaseCamera.h"
+
+    class Camera : public BaseCamera {
+        public:
+            void Initialize() override;
+            void Update() override;
+    };
+
+2. CameraクラスをGameSceneに持たせます。
+
+3. GameSceneでCameraのインスタンスを生成した後、BaseCameraのCreate関数で描画に必要なリソースを生成します。
+
+.. code-block:: cpp
+
+    void GameScene::Initialize() {
+        SceneManager* sceneManager = GetSceneManager();
+        ComponentManager* componentManager = sceneManager->GetCompPtr();
+        input = sceneManager->GetInputManagerPtr();
+
+        m_Camera = std::make_unique<Camera>();
+        m_Camera->Create("mainCamera", sceneManager, componentManager, input);
+        m_Camera->Initialize();
+    }
+
+Create関数の第一引数はEngineが扱うCameraの名前で、ObjectListに表示される名前はこれになります。
+
+Cameraはシーンに追加した後、メインカメラに設定する必要があります。
+
+.. code-block:: cpp
+
+   sceneManager_->SetNowCamera(sceneManager_->GetGameObject(name)->GetEntityID()); 
+
+シーンマネージャーのSetNowCameraにCameraのIDをセットすることでメインカメラの設定ができます。
+
+これでカメラの追加は終わりです！
+
+カメラのコンポーネント
+---------------------------------
+
+BaseCameraには以下のコンポーネントが含まれています
+
+camera : 位置、角度など
+
+これらはBaseCameraに含まれており継承先のクラスでも利用できます
+
+Camera : 
+
+---

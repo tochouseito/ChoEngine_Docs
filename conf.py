@@ -1,3 +1,5 @@
+import sphinx_rtd_theme
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -26,3 +28,6 @@ language = 'ja'
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+html_css_files = ['custom.css']
+
+html_theme = "sphinx_rtd_theme"
